@@ -198,7 +198,7 @@ def mostrar_informe():
             if "pestana_activa" not in st.session_state: st.session_state.pestana_activa = "personal"
 
             st.markdown("### 📌 Resumen: Principales preocupaciones")
-            st.write("Haz clic en el botón de cada tarjeta para desplegar su gráfico detallado:")
+            st.write("A continuación se muestras las principales preocupaciones personales, del municipio y de la provincia:")
             
             col_personal = "_Cu_l_es_su_principal_preocupa"
             col_ciudad = "problema_intendente_recategorizado"
