@@ -54,7 +54,7 @@ def mostrar_informe():
         with st.sidebar:
             st.title("📂 Indice del informe")
             pagina = st.radio("Ir a la sección:", [
-                "1. Perfil del Votante", 
+                "1. Perfil del Encuestado", 
                 "2. Termómetro Social",
                 "3. Economía",
                 "4. Evaluación de Gestión",
@@ -100,7 +100,7 @@ def mostrar_informe():
             df = df[df["Circuito"] == filtro_circuito]
             
         # Filtros demográficos (solo si no estamos en la Pág 1)
-        if pagina != "1. Perfil del Votante":
+        if pagina != "1. Perfil del Encuestado":
             if filtro_sexo != "Todos" and 'Genero' in df.columns:
                 df = df[df["Genero"] == filtro_sexo]
             if filtro_edad != "Todos" and 'Rango_Edad' in df.columns:
@@ -114,7 +114,7 @@ def mostrar_informe():
             st.title(f"💵 {pagina}")
         elif pagina == "5. Elecciones 2027":
             st.title(f"🗳️ {pagina}")    
-        elif pagina == "1. Perfil del Votante":
+        elif pagina == "1. Perfil del Encuestado":
             st.title(f"👥 {pagina}")
         elif pagina == "6. Ficha Técnica":
             st.title (f"📝 {pagina}")    
@@ -307,21 +307,21 @@ def mostrar_informe():
 
             activa_eco = st.session_state.pestana_eco_activa
             if activa_eco == "personal_eco":
-                st.subheader("💳 Desglose: Situación Económica Personal")
+                st.subheader("💳 ¿Cómo evaluaría su situación económica?")
                 if df_ep is not None and not df_ep.empty:
                     fig_ep = px.bar(df_ep, x='Porcentaje', y='Categoria', orientation='h', text_auto='.1f', color='Porcentaje', color_continuous_scale='Blues')
                     fig_ep.update_layout(yaxis={'categoryorder':'total ascending'}, showlegend=False, yaxis_tickfont=dict(size=11))
                     st.plotly_chart(fig_ep, use_container_width=True)
                     with st.expander("Ver tabla completa (%)"): st.dataframe(df_ep.set_index('Categoria').round(1))
             elif activa_eco == "pais_eco":
-                st.subheader("📈 Desglose: Situación Económica del País")
+                st.subheader("📈 ¿Cómo evaluaría la situación económica del país?")
                 if df_ec is not None and not df_ec.empty:
                     fig_ec = px.bar(df_ec, x='Porcentaje', y='Categoria', orientation='h', text_auto='.1f', color='Porcentaje', color_continuous_scale='Teal')
                     fig_ec.update_layout(yaxis={'categoryorder':'total ascending'}, showlegend=False, yaxis_tickfont=dict(size=11))
                     st.plotly_chart(fig_ec, use_container_width=True)
                     with st.expander("Ver tabla completa (%)"): st.dataframe(df_ec.set_index('Categoria').round(1))
             elif activa_eco == "comparativa_eco":
-                st.subheader("⚖️ Desglose: Comparativa Económica")
+                st.subheader("⚖️ ¿Cree que la situación económica de Misiones es: ")
                 if df_co is not None and not df_co.empty:
                     fig_co = px.bar(df_co, x='Porcentaje', y='Categoria', orientation='h', text_auto='.1f', color='Porcentaje', color_continuous_scale='Cividis')
                     fig_co.update_layout(yaxis={'categoryorder':'total ascending'}, showlegend=False, yaxis_tickfont=dict(size=11))
