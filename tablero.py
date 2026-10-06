@@ -133,10 +133,10 @@ def mostrar_informe():
         st.write("---")
 
         # =========================================================
-        # PÁGINA 1: PERFIL DEL VOTANTE
+        # PÁGINA 1: PERFIL DEL ENCUESTADO
         # =========================================================
-        if pagina == "1. Perfil del Votante":
-            st.write("Composición sociodemográfica de la muestra encuestada.")
+        if pagina == "1. Perfil del Encuestado":
+            st.write("Composición sociodemográfica de la muestra")
             
 
             # Usamos df_original para el perfil total, a menos que se filtre por circuito
@@ -339,8 +339,7 @@ def mostrar_informe():
             
             if "pestana_ges_activa" not in st.session_state: st.session_state.pestana_ges_activa = "milei"
 
-            st.markdown("### 📌 Resumen: Evaluación de Gestión")
-            st.write("Haz clic en el botón de cada tarjeta para ver el desglose:")
+            st.markdown("### 📌 ¿Cómo calificaría la gestión de:")
             
             # Asegúrate de que estos nombres coincidan con tus columnas en el Excel
             col_ges_milei = "_C_mo_calificar_a_la_ti_n_de_Javier_Milei"
@@ -401,7 +400,7 @@ def mostrar_informe():
             activa_ges = st.session_state.pestana_ges_activa
 
             if activa_ges == "milei":
-                st.subheader("🔵 Desglose: Gestión Javier Milei")
+                st.subheader("🔵 Evaluación gestión Javier Milei")
                 if df_gm is not None and not df_gm.empty:
                     fig_gm = px.bar(df_gm, x='Porcentaje', y='Categoria', orientation='h', text_auto='.1f', color='Porcentaje', color_continuous_scale='Blues')
                     fig_gm.update_layout(yaxis={'categoryorder':'total ascending'}, showlegend=False, yaxis_tickfont=dict(size=11))
@@ -409,7 +408,7 @@ def mostrar_informe():
                     with st.expander("Ver tabla completa (%)"): st.dataframe(df_gm.set_index('Categoria').round(1))
 
             elif activa_ges == "passalacqua":
-                st.subheader("🟢 Desglose: Gestión Hugo Passalacqua")
+                st.subheader("🟢 Evaluación gestión Hugo Passalacqua")
                 if df_gp is not None and not df_gp.empty:
                     fig_gp = px.bar(df_gp, x='Porcentaje', y='Categoria', orientation='h', text_auto='.1f', color='Porcentaje', color_continuous_scale='Greens')
                     fig_gp.update_layout(yaxis={'categoryorder':'total ascending'}, showlegend=False, yaxis_tickfont=dict(size=11))
@@ -417,7 +416,7 @@ def mostrar_informe():
                     with st.expander("Ver tabla completa (%)"): st.dataframe(df_gp.set_index('Categoria').round(1))
 
             elif activa_ges == "stellato":
-                st.subheader("🟠 Desglose: Gestión Lalo Stellato")
+                st.subheader("🟠 Evaluación gestión Lalo Stellato")
                 if df_gs is not None and not df_gs.empty:
                     fig_gs = px.bar(df_gs, x='Porcentaje', y='Categoria', orientation='h', text_auto='.1f', color='Porcentaje', color_continuous_scale='Oranges')
                     fig_gs.update_layout(yaxis={'categoryorder':'total ascending'}, showlegend=False, yaxis_tickfont=dict(size=11))
