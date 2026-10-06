@@ -430,9 +430,9 @@ def mostrar_informe():
 # --- NUEVA SECCIÓN: Voto Pasado vs Voto Hoy ---
             st.subheader("🗳️ Voto Pasado vs. Intención Actual por Partido")
             
-            # *** ATENCIÓN USER ***: Debes reemplazar estos nombres por los exactos y LIMPIOS de tu Excel
-            col_voto_pasado = "Voto_anterior" # REEMPLAZAR AQUÍ
-            col_voto_hoy = "Voto_futuro"           # REEMPLAZAR AQUÍ
+            # reemplazar estos nombres por los exactos y LIMPIOS de tu Excel
+            col_voto_pasado = "Voto_anterior" 
+            col_voto_hoy = "Voto_futuro"      
             
 # USAMOS 3 COLUMNAS: La del medio (0.05) es para la línea vertical
             col_partido_1, col_linea_1, col_partido_2 = st.columns([0.48, 0.04, 0.48])
@@ -479,7 +479,6 @@ def mostrar_informe():
             col_intencion = "_Tiene_pensado_ir_a_votar"
 
             # --- NUEVA SECCIÓN: Marcadores para Intención de Voto ---
-            # *** ATENCIÓN USER ***: Debes reemplazar estos nombres por los exactos y LIMPIOS de tu Excel
             col_voto_gobernador = "_A_qui_n_votar_a_para_gobernad" # Placeholder para intención Gobernador
             col_voto_intendente = "_y_para_intendente_de_Posadas" # Placeholder para intención Intendente
 
@@ -499,7 +498,7 @@ def mostrar_informe():
                         df_conocimiento, names='Respuesta', values='Porcentaje', hole=0.4,
                         color_discrete_sequence=px.colors.qualitative.Safe
                     )
-                    fig_conocimiento.update_traces(textinfo='label+percent', textposition='outside')
+                    fig_conocimiento.update_traces(textinfo='label+percent', textposition='inside')
                     fig_conocimiento.update_layout(showlegend=False, height=350, margin=dict(t=0, b=0, l=0, r=0))
                     st.plotly_chart(fig_conocimiento, use_container_width=True)
                 else:
@@ -518,7 +517,7 @@ def mostrar_informe():
                         df_intencion, names='Respuesta', values='Porcentaje', hole=0.4,
                         color_discrete_sequence=px.colors.qualitative.Pastel
                     )
-                    fig_intencion.update_traces(textinfo='label+percent', textposition='outside')
+                    fig_intencion.update_traces(textinfo='label+percent', textposition='inside')
                     fig_intencion.update_layout(showlegend=False, height=350, margin=dict(t=0, b=0, l=0, r=0))
                     st.plotly_chart(fig_intencion, use_container_width=True)
                 else:
