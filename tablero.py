@@ -367,8 +367,8 @@ def mostrar_informe():
             # Aquí es donde se llama a la función auxiliar que definimos arriba[cite: 1.1.2]
             # *IMPORTANTE: Los nombres de archivo deben coincidir EXACTAMENTE (Mayúsculas/minúsculas)
             img_milei_b64 = cargar_imagen_base64("Milei.png")
-            img_pass_b64 = cargar_imagen_base64("Passalacqua.png")
-            img_stell_b64 = cargar_imagen_base64("Stellato.png")
+            img_pass_b64 = cargar_imagen_base64("passalacqua.png")
+            img_stell_b64 = cargar_imagen_base64("stellato.png")
 
             # 2. Creamos las tarjetas con imagen (usando Base64 si existe)
             col_g1, col_g2, col_g3 = st.columns(3)
